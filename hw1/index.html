@@ -85,7 +85,7 @@
     <h2>Question 1</h2>
     <p class="question"><strong>[1 point]</strong>
       Describe the two examples for structuring CSS as mentioned in the reading.  What might be the advantages?  What might be the disadvantages?
-      <textarea placeholder="Your Answer..."></textarea>
+      <textarea placeholder="Your Answer...">Object Oriented CSS and Scalable and Modular Architecture for CSS. These architectures encourage developers to create reusable CSS, resulting is less overall code that needs to be developed and maintained. A disadvantage is the number of files needed to cleanly organize different styles. This can require multiple HTTP calls, slowing down the rendering of a page (This can be avoided through other techniques)</textarea>
     </p>
   </fieldset>
 
@@ -94,7 +94,7 @@
     <p class="question"><strong>[1 point]</strong>
       According to the reading, what is the favored approach for selectors?  Why?
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">Keep selectors short and use classes when appropriate, including creating new classes when styles are repeated between different selectors. Keeping selectors short decreases the likelihood the specificity overrides the cascade of other styles.</textarea>
   </fieldset>
 
   <fieldset>
@@ -102,7 +102,7 @@
     <p class="question"><strong>[1 point]</strong>
       Describe at least three techniques in detail for better performance of web applications.
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">Minifying and compressing files reduces the size of files by removing duplicated and unnecessary code. Reducing the number of HTTP requests increases performance by reducing the number of times the client needs to get files from the server. Placing all styles within one compressed file is one way to accomplish this. Finally, caching files saves a copy of the file on the client so that subsequent loads do not need to make HTTP requests for those same files.</textarea>
   </fieldset>
 
   <fieldset>
@@ -110,7 +110,7 @@
     <p class="question"><strong>[1 point]</strong>
       Explain what is a Data URI?
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">Data URIs are encoded files that can be placed directly into HTML or CSS, which removes the need for HTTP requests.</textarea>
   </fieldset>
 
   <fieldset>
@@ -118,7 +118,7 @@
     <p class="question"><strong>[1 points]</strong>
       Explain the different positioning properties.  (static, relative, absolute, fixed, and z-index)
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">The static position is the default position of all elements. Static elements do not accept box offset properties. Relative position does accept box offset properties, and those properties will offset the element from it's normal position in the flow of the document. Absolute positioning also accepts offset properties, and removes the element from the normal flow of the document. The offset properties are relative to the element's relative or absolute positioned parent element. If no element exists that meets that criteria, its offset is applied in relation to the body. Fixed works like absolute, but in relation to the browser's viewport, rather than a parent element. The z-index determines how elements that overlap are displayed. Elements with greater z-indexes appear on top of elements with lower z-indexes.</textarea>
 
   </fieldset>
 
