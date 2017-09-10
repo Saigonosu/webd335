@@ -1,3 +1,25 @@
 /*
  * Put your solution to problem 1 here
  */
+#horizontalButtons ul{
+  list-style: none;
+}
+
+#horizontalButtons li{
+  background-color: lightblue;
+  border-radius: 8px;
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  margin: 5px;
+  text-align: center;
+  width: 85px;
+}
+
+#horizontalButtons li:hover{
+  background-color: cornflowerblue;
+  cursor: pointer;
+}
+
+
+
