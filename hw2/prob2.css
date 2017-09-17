@@ -1,3 +1,12 @@
 /*
  * Put your solution to problem 2 here
  */
+@media all and (min-width: 500px) {
+  section ul {
+    list-style: none;
+  }
+  section li {
+    float: left;
+    margin: 0 20px;
+  }
+}

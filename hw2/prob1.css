@@ -1,3 +1,35 @@
 /*
- * Put your solution to problem 1 here
+ * Put your solution to problem 2 here
  */
+.cell {
+  border-radius: 10px;
+  display: inline-block;
+  font-weight: bold;
+  float: left;
+  height: 60px;
+  line-height: 60px;
+  margin: 2%;
+  text-align: center;
+  vertical-align: middle;
+  width: 60px;
+}
+
+.cell:nth-child(odd){
+  background-color: red;
+}
+
+.cell:nth-child(even){
+  background-color: green;
+}
+
+.row:nth-child(2) .cell {
+  background-color: orange;
+}
+
+.clear {
+  clear: both;
+}
+
+.empty {
+  visibility: hidden;
+}
