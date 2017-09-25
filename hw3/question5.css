@@ -1,2 +1,76 @@
 /*
  * Put CSS solution to question 5 here
+
+
+@keyframes slide {
+  0% {
+    left: 0;
+    top: 0;
+  }
+  50% {
+    left: 244px;
+    top: 100px;
+  }
+  100% {
+    left: 488px;
+    top: 0;
+  }
+}
+
+@keyframes changeColor {
+  0% {
+    background: #eaeaed;
+  }
+  10% {
+    background: orange;
+  }
+  20% {
+    background: green;
+  }
+  30% {
+    background: purple;
+  }
+  40% {
+    background: blue;
+  }
+  50% {
+    background: gold;
+  }
+  60% {
+    background: pink;
+  }
+  70% {
+    background: yellow;
+  }
+  80% {
+    background: cyan;
+  }
+  90% {
+    background: magenta;
+  }
+  100% {
+    background: #eaeaed;
+  }
+}
+
+.stage {
+  background: #eaeaed;
+  border-radius: 6px;
+  height: 150px;
+  position: relative;
+  min-width: 538px;
+}
+.stage:hover .ball {
+  animation: slide 2s ease-in-out .5s infinite alternate;
+}
+.stage:active .ball {
+  animation: changeColor 5s linear infinite;
+  animation-play-state: paused;
+}
+.ball {
+  background: #2db34a;
+  border-radius: 50%;
+  height: 50px;
+  position: absolute;
+  width: 50px;
+}

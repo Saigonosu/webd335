@@ -5,3 +5,37 @@
 
  * Put your preprocessor code below here
  */
+.item
+  left: 0
+  position: relative
+  transition-property: top, left
+  transition-duration: .5s
+  transition-timing-function: linear
+  @media all and (min-width: 500px)
+    position: relative
+    transition-property: top, left
+    transition-duration: .5s
+    transition-timing-function: linear
+    // Add position values for all items
+  &:nth-child(2)
+    top: 10px
+    @media all and (min-width: 500px)
+      top: -15px
+      left: 40px
+  &:nth-child(3)
+    top: 20px
+    @media all and (min-width: 500px)
+      top: -34px
+      left: 95px
+  &:nth-child(4)
+    top: 30px
+    @media all and (min-width: 500px)
+      top: -52px
+      left: 140px
+  &:nth-child(5)
+    top: 40px
+    @media all and (min-width: 500px)
+      top: -70px
+      left: 180px
+
+
