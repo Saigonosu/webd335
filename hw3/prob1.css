@@ -1,0 +1,11 @@
+/*
+ * Put your solution to problem 2 here
+ */
+
+.item-list {
+  position: relative;
+}
+.item:not(:first-child) {
+  left: 100px;
+  position: absolute;
+}
