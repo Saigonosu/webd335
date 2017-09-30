@@ -91,13 +91,42 @@
     <p class="question"><strong>[10 points]</strong> Create the following Form using Bootstrap Base CSS.
       </p>
       <img src="bootstrap_form.png" style="width:30%"/>
-      <p>Enter your comments in the following box</p>
-      <textarea></textarea>
-      <input type='radio' name='gender'>Male</input>
-      <input type='radio' name='gender'>Female</input>
-      <input placeholder='Enter Username'></input>
-      <input placeholder='Password'></input>
-      <input type='checkbox'></input><span>Keep me signed in</span>
+      <form role='form' class='form-inline'>
+        <p>Enter your comments in the following box</p>
+        <br>
+        <textarea rows='5' cols='70'></textarea>
+        <br><br>
+
+          <div class='radio'>
+            <label>
+              <input type='radio' name='gender' value'option1'>
+              Male
+            </label>
+          </div>
+          <div class='radio'>
+            <label>
+              <input type='radio' name='gender' value'option1'>
+              Female
+            </label>
+          </div>
+          <br><br>
+
+        <div class='form-group'>
+          <label for='emailaddress' class='sr-only'>Email Address</label>
+          <input type='email' class='form-control' id='emailaddress' placeholder='Enter email'></input>
+        </div>
+        <div class='form-group'>
+          <label for='enterpassword' class='sr-only'>Password</label>
+          <input type='password' class='form-control' id='enterpassword' placeholder='Password'></input>
+        </div>
+        <br><br>
+
+        <div class='checkbox'>
+          <label> <input type='checkbox'> Keep me signed in </label>
+        </div>
+        <br><br>
+        <button type='submit' class='btn btn-primary'>Login</button>
+      </form>
   </fieldset>
 
   <fieldset>
@@ -105,7 +134,7 @@
     <p class="question"><strong>[1 point]</strong>
       What is the maximum pixel width for a Phone with Bootstrap, and what is the next type of device?
     </p>
-      <textarea placeholder="Your Answer..."></textarea>
+      <textarea placeholder="Your Answer...">The maximum pixel width for a phone is 768. The next type of device is a tablet</textarea>
 
   </fieldset>
 
@@ -114,7 +143,7 @@
     <p class="question"><strong>[1 point]</strong>
       What is the default number of columns in Bootstrap?  And, what is the mixin used to adjust the maximum?
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">The default number of columns is 12. The mixin used to adjust the max is @grid-columns</textarea>
   </fieldset>
 
   <fieldset>
@@ -123,7 +152,7 @@
       Consider, the question "Why would use use bootstrap heading classes, versus using only HTML5 heading elements?".  Review the <a href="http://stackoverflow.com/questions/19099401/why-use-h1-instead-of-actual-h1">question and answers on StackOverflow</a>, and proide three reasons you would or would not use Bootstrap heading class versus HTML5 heading element.
 
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">HTML5 headings should be used for semantics, while bootstrap classes are used for styling. This is helpful when a section needs a top-level heading, but stylistically it should be a smaller level header. Also, heading classes also developers to give non-heading text the same styling as a header would use. Also overrides browser defaults, which provides consistent styling between browsers</textarea>
   </fieldset>
 
   <fieldset>
@@ -131,7 +160,7 @@
     <p class="question"><strong>[1 point]</strong>
       What class is used by Bootstrap for associating elements together in a form?
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">The form-group class</textarea>
   </fieldset>
 
 </div>
