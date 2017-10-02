@@ -2,67 +2,72 @@
 <html>
 <head>
   <title>Todo</title>
-  <link rel="stylesheet" href='todo.css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
-  <!-- Latest compiled and minified JavaScript -->
+  <!-- La compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href='todo.css'>
 </head>
 
 <body>
-  <div class='menu'>
-    <ul>
-      <li class='item'><img src="http://i.stack.imgur.com/KVkTq.jpg" style="width: 20px"></li>
-      <li class='item'>Todos</li>
-      <li class='item'>Add</li>
-      <li class='item'>Edit</li>
-      <li class='item'>More</li>
-    </ul>
-  </div>
+    <div class='menu '>
+      <ul>
+        <li class='item'><img src="http://i.stack.imgur.com/KVkTq.jpg" style="width: 20px"></li>
+        <li class='item'>Todos</li>
+        <li class='item'>Add</li>
+        <li class='item'>Edit</li>
+        <li class='item'>More</li>
+      </ul>
+    </div>
 
-  <table>
-    <thead>
-      <tr>
-        <td>Todo</td>
-        <td>Action</td>
-        <td>Date</td>
-        <td>User</td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Go To Zoo</td>
-        <td>Wife said so</td>
-        <td>Tomorrow</td>
-        <td>Ryan</td>
-      </tr>
-      <tr>
-        <td>Do Homework</td>
-        <td>Teacher said so</td>
-        <td>Today</td>
-        <td>Ryan</td>
-      </tr>
-    </tbody>
-  </table>
-  <h1 class='h1'>Add Todo</h1>
-  <form>
-    <div class='form-group'>
-      <label for='todo' class='sr-only'>Todo</label>
-      <input type='text' class='form-control' id='todo' placeholder='Todo...'></input>
-    </div>
-    <textarea rows='2' class='form-control' placeholder='Provide details of what needs to be done...'></textarea>
-    <div class='checkbox'>
-      <label> <input type='checkbox'> Do Right Away?</label>
-    </div>
-    <br>
-    <div class='form-group'>
-      <label for='emailaddress' class='sr-only'>Email Address</label>
-      <input type='email' class='form-control' id='emailaddress' placeholder='Enter email'></input>
-    </div>
-    <button type='submit' class='btn btn-default'>Add Todo</button>
-  </form>
+  <div class=' container-fluid'>
+    <table class='table table-striped table-bordered'>
+      <thead class='thead-default'>
+        <tr>
+          <td>Todo</td>
+          <td>Action</td>
+          <td>Date</td>
+          <td>User</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Go To Zoo</td>
+          <td>Wife said so</td>
+          <td>Tomorrow</td>
+          <td>Ryan</td>
+        </tr>
+        <tr>
+          <td>Do Homework</td>
+          <td>Teacher said so</td>
+          <td>Today</td>
+          <td>Ryan</td>
+        </tr>
+      </tbody>
+    </table>
+    <h1 class='h1'>Add Todo</h1>
+    <form class='form-inline'>
+      <div class='form-group'>
+        <label for='todo' class='sr-only'>Todo</label>
+        <input type='text' class='form-control' id='todo' placeholder='Todo...'></input>
+      </div>
+      <br>
+      <textarea rows='2' class='form-control' placeholder='Provide details of what needs to be done...'></textarea>
+      <br>
+      <div class='checkbox'>
+        <label> <input type='checkbox'> Do Right Away?</label>
+      </div>
+      <br><br>
+      <div class='form-group'>
+        <label for='emailaddress' class='sr-only'>Email Address</label>
+        <input type='email' class='form-control' id='emailaddress' placeholder='Enter email'></input>
+      </div>
+        <button type='submit' class='btn btn-default'>Add Todo</button>
+    </form>
+  </div>
 </body>
 </html>

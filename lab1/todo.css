@@ -4,6 +4,7 @@ body {
   margin: 0;
   padding: 0;
 }
+
 .menu {
   background-color: white;
   float: left;
@@ -20,6 +21,9 @@ body {
 
 .test {
   border: 1px solid black;
+}
+.table thead{
+  background-color: lightgrey;
 }
 
 .item {
@@ -41,6 +45,12 @@ body {
 }
 .item:nth-child(5) {
   top: 130px;
+}
+@media all and (max-width: 500px) {
+  .container-fluid {
+    position: absolute;
+    left:100px;
+  }
 }
 
 @media all and (min-width: 500px) {
