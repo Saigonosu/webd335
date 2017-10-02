@@ -1,7 +1,77 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 .menu {
+  background-color: white;
   float: left;
+  height: 100%;
+  position: relative;
+  transition-property: background-color;
+  transition-duration: .5s;
+  transition-timing-function: linear;
+  width: 100px;
+}
+.menu ul{
+  list-style: none;
 }
 
 .test {
   border: 1px solid black;
+}
+
+.item {
+  left: 0;
+  position: absolute;
+  color: black;
+  transition-property: top, left;
+  transition-duration: .5s;
+  transition-timing-function: linear;
+}
+.item:nth-child(2) {
+  top: 40px;
+}
+.item:nth-child(3) {
+  top: 70px;
+}
+.item:nth-child(4) {
+  top: 100px;
+}
+.item:nth-child(5) {
+  top: 130px;
+}
+
+@media all and (min-width: 500px) {
+.menu {
+  height: 20px;
+  background-color: black;
+  float: none;
+  position: relative;
+  width: 100%;
+}
+.item {
+  position: absolute;
+  color: white;
+  transition-property: top, left;
+  transition-duration: .5s;
+  transition-timing-function: linear;
+}
+.item:nth-child(2) {
+  top: 0;
+  left: 60px;
+}
+.item:nth-child(3) {
+  top: 0;
+  left: 130px;
+}
+.item:nth-child(4) {
+  top: 0;
+  left: 200px;
+}
+.item:nth-child(5) {
+  top: 0;
+  left: 270px;
+}
 }
