@@ -37,9 +37,22 @@
     <br />
     <br />
     <div class="prob1">
-
+      <div class='navbar navbar-custom'>
+        <ul class='nav navbar-nav nav-pills'>
+          <li class='dropdown'><a href='#' data-toggle='dropdown' class='dropdown-toggle'> <span class='glyphicon glyphicon-ok'> </span> ToDo Item<b class='caret'></b></a>
+            <ul class='dropdown-menu'>
+              <li><a href='#'> <span class='glyphicon glyphicon-plus'> </span> Add</a></li>
+              <li><a href='#'> <span class='glyphicon glyphicon-pencil'> </span> Edit</a></li>
+              <li><a href='#'> <span class='glyphicon glyphicon-remove'> </span> Delete</a></li>
+              <li class='divider'></li>
+              <li><a href='#'> <span class='glyphicon glyphicon-search'> </span> Search</a></li>
+            </ul>
+          </li>
+          <li><a href='#'> <span class='glyphicon glyphicon-user'> </span> My ToDo's</a></li>
+          <li><a href='#'> <span class='glyphicon glyphicon-cog'> </span> Settings</a></li>
+        </ul>
+      </div>
       <!-- Problem 1 HTML and Bootstrap Answer Here -->
-
     </div>
 
   </fieldset>
@@ -51,6 +64,36 @@
       <br />
       <br />
       <div class="prob2">
+        <div class ='panel-group' id='accordion'>
+          <div class='panel panel-success'>
+            <div class='panel-heading'>
+              <h4 class='panel-title'>
+                <a data-toggle='collapse' data-parent='#accordian' href='#trash'>
+                  <b>Take out the Trash</b> <b class='caret'></b>
+                </a>
+              </h4>
+            </div>
+            <div id='trash' class='panel-collapse collapse'>
+              <div class='panel-body'>
+                <p>The trash is piling up. Please take it to the curb. Thanks.</p>
+              </div>
+            </div>
+          </div>
+          <div class='panel panel-primary'>
+            <div class='panel-heading'>
+              <h4 class='panel-title'>
+                <a data-toggle='collapse' data-parent='#accordian' href='#dog'>
+                  Give the Dog a bath <b class='caret'></b>
+                </a>
+              </h4>
+            </div>
+            <div id='dog' class='panel-collapse collapse'>
+              <div class='panel-body'>
+                <p>Tiger gets dirty so easily. He needs a bath, and don't forget behind the ears.</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- Problem 2 HTML and Bootstrap Answer Here -->
 
@@ -66,7 +109,7 @@
     <p class="question"><strong>[1 point]</strong>
       Which bootstrap component is used to convey crucial messages for situations where the website users have to be warned, informed, or cautioned?
     </p>
-      <textarea placeholder="Your Answer..."></textarea>
+      <textarea placeholder="Your Answer...">Alerts</textarea>
 
   </fieldset>
 
@@ -75,7 +118,7 @@
     <p class="question"><strong>[1 point]</strong>
       Which bootstrap component gives you the power to generate portions of self-contained bars, which could be used as whole-application headers?
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">Navbar</textarea>
   </fieldset>
 
   <fieldset>
@@ -83,7 +126,7 @@
     <p class="question"><strong>[1 point]</strong>
       Describe what a Modal is and how it is used?
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">Modal is a type of dialog box that provides information to users before taking an action. It's used to alert users about something that is going to happen, so users can make a more informed decision</textarea>
   </fieldset>
 
   <fieldset>
@@ -91,7 +134,7 @@
     <p class="question"><strong>[2 point]</strong>
       Does Bootstrap require JQuery?  Explain why or why not.
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">While Bootstrap does not require JQuery, some components, such as popovers, collapse, and modals, won't be able to be used.</textarea>
   </fieldset>
 
 </div>
