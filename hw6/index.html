@@ -46,6 +46,19 @@
 
     <script>
     <!-- Write your Javascript Object and functions here -->
+    var Todo = function (name, description, email){
+      this.name = name;
+      this.description = description;
+      this.datetime = new Date();
+      this.useremail = email;
+    }
+
+    Todo.prototype.getName = function() { return this.name;
+    }
+
+    Todo.prototype.getUserEmail = function() {
+      return this.useremail;
+    }
 
     </script>
 
@@ -59,6 +72,24 @@
       <script>
 
         <!-- Write a Javascript Closure that returns a object instance of Todo and assigns it to myTodo.obj -->
+var todo = function (name, description, email) {
+  var name = name;
+  var description = description;
+  var datetime = datetime;
+  var useremail = email;
+  return {
+    getName: function(){
+      return name;
+    },
+    getUserEmail: function(){
+      return useremail;
+    }
+  };
+};
+
+var myTodo = {}
+myTodo.obj = todo('Sleep', 'Go to sleep', 'zzzz@sleep.com')
+
 
       </script>
       <br />
@@ -72,7 +103,7 @@
     <p class="question"><strong>[1 point]</strong>
       What is an object in Javascript?
     </p>
-      <textarea placeholder="Your Answer..."></textarea>
+      <textarea placeholder="Your Answer...">An object is a container of properties, where a property has a name and a value</textarea>
 
   </fieldset>
 
@@ -81,7 +112,7 @@
     <p class="question"><strong>[1 point]</strong>
       Give two examples of how to reference a property in Javascript.
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">You can use dot notation (i.e. obj.property) or bracket notation (i.e. obj[property])</textarea>
   </fieldset>
 
   <fieldset>
@@ -89,7 +120,7 @@
     <p class="question"><strong>[1 point]</strong>
       What is the accessibility scope when declaring a var?
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">variables are available within the scope they are defined, and any nested functions. They are unavailable outside the function in which they are defined</textarea>
   </fieldset>
 
   <fieldset>
@@ -97,7 +128,15 @@
     <p class="question"><strong>[2 point]</strong>
       Describe a callback.  Provide a Javascript code example of a callback function and it being used.
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">Callback functions are passed as a parameter to another function and called after some event.
+var foo = function(){console.log("Stuff and Things");}
+var bar = function (word, callback) {
+  console.log(word)
+  callback()
+}
+bar('Ryan', foo); // 'Ryan'\n"Stuff and Things"
+</textarea>
+
   </fieldset>
 
 </div>
