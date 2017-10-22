@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Update</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+  <!-- La compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href='update.css'>
+</head>
+
+<body>
+    <div class='menu '>
+      <ul>
+        <li class='item'>Page 1</li>
+        <li class='item'>Page 2</li>
+        <li class='item'>Page 3</li>
+        <li class='item'>Page 4</li>
+      </ul>
+    </div>
+
+  <div class=' container-fluid'>
+    <div class='col-sm-5'>
+      <h1 class='h1'>To Do List</h1>
+      <table class='table table-condensed table-striped table-bordered'>
+        <thead class='thead-default'>
+          <tr>
+            <td>#</td>
+            <td>Date</td>
+            <td>Comment</td>
+            <td>Status</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Test Cell 1</td>
+            <td>Test Cell 1</td>
+            <td>Test Cell 1</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Test Cell 2</td>
+            <td>Test Cell 2</td>
+            <td>Test Cell 2</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Test Cell 3</td>
+            <td>Test Cell 3</td>
+            <td>Test Cell 3</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Test Cell 4</td>
+            <td>Test Cell 4</td>
+            <td>Test Cell 4</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Test Cell 5</td>
+            <td>Test Cell 5</td>
+            <td>Test Cell 5</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class='col-sm-5'>
+      <h1 class='h1'>Action Items</h1>
+      <form class='form'>
+        <div class='form-group'>
+          <label for='todo'>To do Item</label>
+          <input type='text' class='form-control' id='todo' placeholder='To Do Item'></input>
+        </div>
+        <div class='form-group'>
+          <label for='date'>Date</label>
+          <input type='text' class='form-control' id='date' placeholder='mm/dd/yy'></input>
+        </div>
+        <div class='form-group'>
+          <label for='comment'>Comment</label>
+          <textarea rows='2' class='form-control' id='comment' placeholder='Add Comment...'></textarea>
+        </div>
+        <div class='form-group'>
+          <label for='select'>Status</label>
+          <select class='form-control' id='select' placeholder='Add Comment...'>
+            <option>Defined</option>
+            <option>Test Status 2</option>
+            <option>Test Status 3</option>
+            <option>Test Status 4</option>
+            <option>Test Status 5</option>
+          </select>
+        </div>
+          <button type='submit' class='btn btn-default'>Add Todo</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
