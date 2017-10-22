@@ -20,6 +20,13 @@ ul {
   margin: auto;
   width: 720px;
 }
+.square {
+  background-color: red;
+  height: 50px;
+  margin: 10px 0;
+  padding: 0;
+  width: 50px;
+}
 fieldset {
   padding: 1em;
   padding-bottom: 2em;

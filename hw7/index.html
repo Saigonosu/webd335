@@ -35,6 +35,15 @@
 
     <script>
     <!-- Write your Javascript and JQuery here-->
+    $('document').ready(function(){
+      console.log("Shit's ready, yo");
+    });
+    $('#btnChangeColor').click(function(){
+       $('#circleToChange').css('background-color', 'green');
+       for(var i=1; i<=5; i++){
+         $('#squaresGoInHere').append("<div class='square'></div>");
+       }
+    });
     </script>
 
   </fieldset>
@@ -59,7 +68,8 @@
     <p class="question"><strong>[1 point]</strong>
       Give an example of adding and removing a class to an HTML element using jquery?
     </p>
-      <textarea placeholder="Your Answer..."></textarea>
+      <textarea placeholder="Your Answer...">$(some_element).addClass('some_class')
+$(some_element).removeClass('some_class') </textarea>
 
   </fieldset>
 
@@ -68,7 +78,7 @@
     <p class="question"><strong>[1 point]</strong>
       Provide two reasons from the reading why JSON is preferred over XML.
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">XML can be too heavy, and JSON is processed more consistently in different web browsers</textarea>
   </fieldset>
 
   <fieldset>
@@ -76,7 +86,8 @@
     <p class="question"><strong>[1 point]</strong>
       Provide two different syntax examples of how to declare and invoke the function that is the reaction to the DOM loaded "ready" event.
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">$(document).ready(function())
+jQuery(function())</textarea>
   </fieldset>
 
   <fieldset>
@@ -84,14 +95,14 @@
     <p class="question"><strong>[1 point]</strong>
       By default what is "this" in a browser context globally?
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">By default, this refers to the browser window</textarea>
   </fieldset>
   <fieldset>
     <h2>Question 5</h2>
     <p class="question"><strong>[1 point]</strong>
       Describe chaining in JQuery.
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">jQuery methods return a jQuery object, which can have methods called on it. i.e. $(element).append().css().append() etc</textarea>
   </fieldset>
 
 
