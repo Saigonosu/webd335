@@ -26,6 +26,11 @@ body {
   background-color: lightgrey;
 }
 
+.table.table-striped .blank {
+  background: none;
+  border-width: 0;
+}
+
 .item {
   left: 0;
   position: absolute;
