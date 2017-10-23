@@ -20,6 +20,24 @@
       $(".btn-danger").click(function(){
         $("#alert").append('<div class="alert alert-danger alert-dismissable">Delete this Todo? <a class="close" data-dismiss="alert" aria-label="close">x</a></div>')
       })
+
+      var buildTable = function(){
+        todos.forEach(function(todo){
+          //Eventually I'll loop through properties
+          var tableRow = "<tr>";
+          tableRow += "<td>" + todo.name + "</td>";
+          tableRow += "<td>" + todo.action + "</td>";
+          tableRow += "<td>" + todo.dateToComplete + "</td>";
+          tableRow += "<td>" + todo.email + "</td>";
+          tableRow += "<td class='blank'><button type='button' class='btn btn-danger'>Delete</button></td>";
+          tableRow += '</tr>';
+          $("tbody").append(tableRow)
+        })
+      }
+
+      var todo1 = new Todo('test', 'test', 'test', 'test');
+      todos.push(todo1);
+      buildTable();
     })
 
     var todos = new Array();
@@ -53,6 +71,7 @@
         todos.splice(position, 1);
       }
     }
+
   </script>
 </head>
 
