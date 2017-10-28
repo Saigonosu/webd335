@@ -16,29 +16,55 @@
   <link rel="stylesheet" href='todo.css'>
 
   <script>
-    $(document).ready(function(){
-      $(".btn-danger").click(function(){
-        $("#alert").append('<div class="alert alert-danger alert-dismissable">Delete this Todo? <a class="close" data-dismiss="alert" aria-label="close">x</a></div>')
-      })
 
-      var buildTable = function(){
-        todos.forEach(function(todo){
+      var buildTable = function(todoArray){
+        $("tr").remove();
+        todoArray.forEach(function(todo){
           //Eventually I'll loop through properties
           var tableRow = "<tr>";
           tableRow += "<td>" + todo.name + "</td>";
           tableRow += "<td>" + todo.action + "</td>";
           tableRow += "<td>" + todo.dateToComplete + "</td>";
           tableRow += "<td>" + todo.email + "</td>";
-          tableRow += "<td class='blank'><button type='button' class='btn btn-danger'>Delete</button></td>";
+          tableRow += "<td class='blank'><button onClick=deleteAlert() type='button' class='btn btn-danger'>Delete</button></td>";
           tableRow += '</tr>';
           $("tbody").append(tableRow)
         })
       }
 
-      var todo1 = new Todo('test', 'test', 'test', 'test');
-      todos.push(todo1);
-      buildTable();
-    })
+      var paginateTodos = function(todoArray){
+        var paginatedTodos = new Array();
+        var todos = 1;
+        var page = 1;
+        todoArray.forEach(function(todo){
+          if(paginatedTodos[page]){
+            paginatedTodos[page].push(todo)
+          }else {
+            paginatedTodos[page] = new Array();
+            paginatedTodos[page].push(todo)
+          }
+          todos++;
+          console.log("todo number: " + todos);
+          console.log("page number: " + page);
+          if(todos > 5){
+            page++;
+            todos = 1;
+          }
+        })
+        return paginatedTodos;
+      }
+
+      var buildPagination = function(todoArray){
+        //We start at 1 and go less than length because the first element of pagination is undefined to make it easier when selecting the page
+        for(var i=1; i<todoArray.length; i++){
+          $(".pagination").append("<li><a onClick=buildTable(paginatedTodos[" + i + "])>" + i + "</a></li>");
+        }
+      }
+
+
+    var deleteAlert = function(){
+      $("#alert").append('<div class="alert alert-danger alert-dismissable">Delete this Todo? <a class="close" data-dismiss="alert" aria-label="close">x</a></div>')
+    }
 
     var todos = new Array();
 
@@ -72,6 +98,28 @@
       }
     }
 
+      var todo1 = new Todo('test', 'test', 'test', 'test');
+      var todo2 = new Todo('test2', 'test2', 'test2', 'test2');
+      var todo3 = new Todo('test3', 'test3', 'test3', 'test3');
+      todos.push(todo1);
+      todos.push(todo1);
+      todos.push(todo1);
+      todos.push(todo1);
+      todos.push(todo1);
+      todos.push(todo2);
+      todos.push(todo2);
+      todos.push(todo2);
+      todos.push(todo2);
+      todos.push(todo2);
+      todos.push(todo3);
+
+
+      var paginatedTodos = paginateTodos(todos);
+      $(document).ready(function(){
+        console.log(paginatedTodos);
+        buildPagination(paginatedTodos);
+        buildTable(paginatedTodos[1]);
+      })
   </script>
 </head>
 
@@ -110,23 +158,18 @@
           <td>Wife said so</td>
           <td>Tomorrow</td>
           <td>Ryan</td>
-          <td class='blank'><button type='button' class='btn btn-danger'>Delete</button></td>
+          <td class='blank'><button onClick="deleteAlert()" type='button' class='btn btn-danger'>Delete</button></td>
         </tr>
         <tr>
           <td>Do Homework</td>
           <td>Teacher said so</td>
           <td>Today</td>
           <td>Ryan</td>
-          <td class='blank'><button class='btn btn-danger'>Delete</button></td>
+          <td class='blank'><button onClick="deleteAlert()" class='btn btn-danger'>Delete</button></td>
         </tr>
       </tbody>
     </table>
     <ul class='pagination'>
-      <li><a>1</a></li>
-      <li><a>2</a></li>
-      <li><a>3</a></li>
-      <li><a>4</a></li>
-      <li><a>5</a></li>
     </ul>
     <div class='alert alert-info alert-dismissable'>
       <a class='close' data-dismiss='alert' aria-label='close'>OK</a>
