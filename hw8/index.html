@@ -48,6 +48,12 @@
 
     $('#prob1 .box.first').on('click', function(){
       <!-- Write your Javascript and JQuery here-->
+      $('#prob1 .box.second').clone().removeClass('second').addClass('second-and-half').insertAfter('#prob1 .box.first');
+      console.log('Create a clone the second box element, remove the second class, add the second-and-half class and insert it after the first box');
+      $('#prob1 .box.second').remove();
+      console.log("remove the original second box");
+      $('#prob1 .box.second-and-half').css('background-color', 'green');
+      console.log('Change the background color of the new second box to green');
     });
     </script>
 
@@ -72,6 +78,7 @@
       $('#prob2 .box.second').on('click', function(){
         <!-- Write your Javascript above in the same function -->
         var childOfSecond = $('.child-of-second');
+        childOfSecond.closest('#prob2').find('.third').css('background-color', 'orange');
       });
       </script>
       <br />
@@ -85,7 +92,7 @@
     <p class="question"><strong>[1 point]</strong>
       Explain and Give an example of using jquery each function.
     </p>
-      <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">.each() takes an array and a callback function, then performs the callback function on each element in the array. JQuery.each(['hi', 'world'], function(idx, val){ console.log(val);})</textarea>
 
   </fieldset>
 
@@ -94,7 +101,7 @@
     <p class="question"><strong>[1 point]</strong>
       What is the difference between jquery find and closest functions?
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">Find allows you to search for descendant elements, while closest lets you search ancestor elements</textarea>
   </fieldset>
 
   <fieldset>
@@ -102,7 +109,7 @@
     <p class="question"><strong>[1 point]</strong>
       Explain and describe prepend and append functions.
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">Prepend adds the content as the first child while append adds the content as the last child</textarea>
   </fieldset>
 
   <fieldset>
@@ -110,14 +117,14 @@
     <p class="question"><strong>[1 point]</strong>
       What is the difference between jquery empty and remove functions?
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">Empty removes any children and text within the element. Remove removes the element entirely</textarea>
   </fieldset>
   <fieldset>
     <h2>Question 5</h2>
     <p class="question"><strong>[1 point]</strong>
       What is the difference between jquery text and html functions?
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">Text will return a string of the combined text of all matched elements. It can be used on both HTML and XML documents. HTML cannont be used on XML documents and returns all text (including HTML) of the first matched element</textarea>
   </fieldset>
 
 
