@@ -35,6 +35,14 @@
 
     <script>
       <!-- Write your Javascript and JQuery here-->
+      $("#prob1").on("printHello", function(event){
+        var section = $(this);
+        section.append("<p>Hello World</p>");
+      });
+
+      $("#prob1button").click(function(){
+        $(this).closest("#prob1").trigger("printHello");
+      });
     </script>
 
   </fieldset>
@@ -52,6 +60,12 @@
       <script>
       $('#prob2button').on('click', function(){
         <!-- Write your Javascript above in the same function -->
+          console.log("STUFF");
+          $.getJSON("https://api.github.com/users/petegordon/repos", function(data, status, jqXHR){
+            $(".github-repos").text(data.length);
+            console.log(jqXHR.responseText);
+            $('#prob2').append("<img src='" + data[0].owner.avatar_url + "'>")
+          });
       });
       </script>
       <br />
