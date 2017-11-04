@@ -1,0 +1,106 @@
+<html>
+<!--
+ This is the HTML for the homework problem. It may not be edited
+-->
+
+<head>
+  <title>Homework #9</title>
+  <link rel="stylesheet" type="text/css" href="homework.css">
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+  <div class="container">
+    <div id="header">
+      <h1>Homework #9</h1>
+      <p>WEBD 335 &#8213; Pete Gordon</p>
+      <div id="instructions">
+        <p>
+          <strong>Instructions:</strong> Follow the instructions below for each Problem (you can write the Javascript in this HTML file directly and return it) and Answer each Question completely (in another document).
+        </p>
+      </div>
+
+  <fieldset>
+    <h2>Problem 1 &#8213; JQuery Custom Events</h2>
+    <p class="question"><strong>[10 points]</strong> Review the JQuery tutorial <a href="https://learn.jquery.com/events/introduction-to-custom-events/">here</a>.  Write your own custom event that is triggered when the button below is clicked.</p>
+
+    <br />
+    <br />
+
+    <div id="prob1">
+      <button id="prob1button">Event Trigger</button>
+    </div>
+
+    <script>
+      <!-- Write your Javascript and JQuery here-->
+    </script>
+
+  </fieldset>
+
+  <fieldset>
+    <h2>Problem 2 &#8213; JQuery JSONP</h2>
+    <p class="question"><strong>[10 points]</strong> Write the JSONP call to https://api.github.com/users/petegordon/repos and write the resulting JSON to the console and replace the h1 NONE with the count of my github repos returned by the JSONP call.</p>
+      <br />
+      <br />
+      <div id="prob2">
+        <button id="prob2button">Get JSONP</button>
+        <h1 class="github-repos">NONE</h1>
+      </div>
+
+      <script>
+      $('#prob2button').on('click', function(){
+        <!-- Write your Javascript above in the same function -->
+      });
+      </script>
+      <br />
+      <br />
+
+
+  </fieldset>
+
+  <fieldset>
+    <h2>Question 1</h2>
+    <p class="question"><strong>[1 point]</strong>
+      Explain what event.stopPropagation() does.
+    </p>
+      <textarea placeholder="Your Answer..."></textarea>
+
+  </fieldset>
+
+  <fieldset>
+    <h2>Question 2</h2>
+    <p class="question"><strong>[1 point]</strong>
+      In the reading the key for data binding in jQuery is bind().  But, as of JQuery 1.7 what is the preferred method for attaching event handlers?  Reference the <a href="http://api.jquery.com">JQuery documentation</a> to find the answer.
+    </p>
+    <textarea placeholder="Your Answer..."></textarea>
+  </fieldset>
+
+  <fieldset>
+    <h2>Question 3</h2>
+    <p class="question"><strong>[1 point]</strong>
+      Not using JQuery, what Javascript object is available for controlling HTTP transactions from client-side programming?
+    </p>
+    <textarea placeholder="Your Answer..."></textarea>
+  </fieldset>
+
+  <fieldset>
+    <h2>Question 4</h2>
+    <p class="question"><strong>[1 point]</strong>
+      Name three (3) different jquery methods available to make an ajax call.
+    </p>
+    <textarea placeholder="Your Answer..."></textarea>
+  </fieldset>
+  <fieldset>
+    <h2>Question 5</h2>
+    <p class="question"><strong>[1 point]</strong>
+      What is the difference between jquery text and html functions?
+    </p>
+    <textarea placeholder="Your Answer..."></textarea>
+  </fieldset>
+
+
+</div>
+</div>
+</body>
