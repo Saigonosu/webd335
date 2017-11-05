@@ -60,11 +60,9 @@
       <script>
       $('#prob2button').on('click', function(){
         <!-- Write your Javascript above in the same function -->
-          console.log("STUFF");
           $.getJSON("https://api.github.com/users/petegordon/repos", function(data, status, jqXHR){
             $(".github-repos").text(data.length);
             console.log(jqXHR.responseText);
-            $('#prob2').append("<img src='" + data[0].owner.avatar_url + "'>")
           });
       });
       </script>
@@ -79,7 +77,7 @@
     <p class="question"><strong>[1 point]</strong>
       Explain what event.stopPropagation() does.
     </p>
-      <textarea placeholder="Your Answer..."></textarea>
+      <textarea placeholder="Your Answer...">Stops the propagation of events bubbling up through the DOM</textarea>
 
   </fieldset>
 
@@ -88,7 +86,7 @@
     <p class="question"><strong>[1 point]</strong>
       In the reading the key for data binding in jQuery is bind().  But, as of JQuery 1.7 what is the preferred method for attaching event handlers?  Reference the <a href="http://api.jquery.com">JQuery documentation</a> to find the answer.
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">on is the preferred method for attaching event handlers</textarea>
   </fieldset>
 
   <fieldset>
@@ -96,7 +94,7 @@
     <p class="question"><strong>[1 point]</strong>
       Not using JQuery, what Javascript object is available for controlling HTTP transactions from client-side programming?
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">XMLHttpRequest</textarea>
   </fieldset>
 
   <fieldset>
@@ -104,14 +102,14 @@
     <p class="question"><strong>[1 point]</strong>
       Name three (3) different jquery methods available to make an ajax call.
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">getJSON(), get(), and ajax()</textarea>
   </fieldset>
   <fieldset>
     <h2>Question 5</h2>
     <p class="question"><strong>[1 point]</strong>
       What is the difference between jquery text and html functions?
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">html function parses the argument as html, meaning it will style the text according to tags. Text will simply parse the argument as text</textarea>
   </fieldset>
 
 
