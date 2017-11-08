@@ -1,0 +1,105 @@
+<html ng-app="homework">
+<!--
+ This is the HTML for the homework problem. It may not be edited
+-->
+
+<head>
+  <title>Homework #10</title>
+  <link rel="stylesheet" type="text/css" href="homework.css">
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div id="header">
+      <h1>Homework #10</h1>
+      <p>WEBD 335 &#8213; Pete Gordon</p>
+      <div id="instructions">
+        <p>
+          <strong>Instructions:</strong> Follow the instructions below for each Problem (you can write the Javascript in this HTML file directly and return it) and Answer each Question completely (in another document).
+        </p>
+      </div>
+
+  <fieldset>
+    <h2>Problem 1 &#8213; JQuery POST JSON Array</h2>
+    <p class="question"><strong>[10 points]</strong> Using the provided NodeJS Server write the JQuery required to POST an array to the server when the Event Trigger button is clicked. You must POST more than one thing; and you must use name/value pairs for your things.</p>
+
+    <br />
+    <br />
+
+    <div id="prob1">
+      <button id="prob1button">Event Trigger</button>
+    </div>
+
+    <script>
+      <!-- Write your Javascript and JQuery here-->
+    </script>
+
+  </fieldset>
+
+  <fieldset>
+    <h2>Problem 2 &#8213; AngularJS POST JSON Array</h2>
+    <p class="question"><strong>[10 points]</strong>Using the provided NodeJS Server write the AngularJS required to POST an array to the server when the Event Trigger button is clicked. Just as in problem 1 above, you must POST more than one thing; and you must use name/value pairs for your things (it would be best to use a copy of the same JSON used above).  Note: the ng-app declaration on the html tag; and the ng-controller=HomeworkController and ng-click=doAjax declaration below.</p>
+      <br />
+      <br />
+      <div id="prob2" ng-controller="HomeworkController">
+        <button id="prob2button" ng-click="doAjax()">Event Trigger</button>
+      </div>
+
+      <script>
+        <!-- Write your Javascript and AngularJS here-->
+      </script>
+      <br />
+      <br />
+
+
+  </fieldset>
+
+  <fieldset>
+    <h2>Question 1</h2>
+    <p class="question"><strong>[1 point]</strong>
+      Briefly explain how the data in JSON organized.
+    </p>
+      <textarea placeholder="Your Answer..."></textarea>
+
+  </fieldset>
+
+  <fieldset>
+    <h2>Question 2</h2>
+    <p class="question"><strong>[1 point]</strong>
+      What method is used to convert a JSON string to a Javascript Object?  What method is used to convert a Javascript Object to JSON?
+    </p>
+    <textarea placeholder="Your Answer..."></textarea>
+  </fieldset>
+
+  <fieldset>
+    <h2>Question 3</h2>
+    <p class="question"><strong>[1 point]</strong>
+      Not using JQuery or AngularJS, what class and what two methods on that class would be used to make a request?
+    </p>
+    <textarea placeholder="Your Answer..."></textarea>
+  </fieldset>
+
+  <fieldset>
+    <h2>Question 4</h2>
+    <p class="question"><strong>[1 point]</strong>
+      How many ready states are there when making an HTTP request?  List each of them.
+    </p>
+    <textarea placeholder="Your Answer..."></textarea>
+  </fieldset>
+  <fieldset>
+    <h2>Question 5</h2>
+    <p class="question"><strong>[1 point]</strong>
+      What is the AngularJS core object used to make HTTP Requests?  What are the available "methods" when making a request; and describe each one; which are the most common?  Which one is not part of the HTTP standards as of yet?  (Find answers using Google)
+    </p>
+    <textarea placeholder="Your Answer..."></textarea>
+  </fieldset>
+
+
+</div>
+</div>
+</body>
