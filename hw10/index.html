@@ -37,26 +37,33 @@
 
     <script>
       <!-- Write your Javascript and JQuery here-->
-        function thing() {
-            console.log('Stuff');
-            var req = {
+        var thing = function() {
+            var req1 = {
+                foo: "bar",
+                bar: "baz"
+            };
+            var req2 = {
+                foo: "bar",
+                bar: "baz"
+            };
+            var req3 = {
                 foo: "bar",
                 bar: "baz"
             };
 
-            console.log(req);
+            var arr = [req1, req2, req3];
+
             $.ajax({
                 type: "POST",
                 url: "/",
-                data: JSON.stringify(req),
+                data: JSON.stringify(arr),
                 dataType: "json"
-            });
-        };
+            })
+          }
 
         $('#prob1button').click(function() {
-            console.log('hi');
             thing();
-        });
+        })
 
 
     </script>
@@ -74,21 +81,32 @@
 
       <script>
         <!-- Write your Javascript and AngularJS here-->
-        function doAjax() {
-            console.log('Stuff');
-            var req = {
+        var app = angular.module("homework", []);
+    app.controller('HomeworkController', ["$scope", "$http",
+        function($scope, $http) {
+         $scope.doAjax = function() {
+            var req1 = {
+                foo: "bar",
+                bar: "baz"
+            };
+            var req2 = {
+                foo: "bar",
+                bar: "baz"
+            };
+            var req3 = {
                 foo: "bar",
                 bar: "baz"
             };
 
-            console.log(req);
-            $.ajax({
-                type: "POST",
+            var arr = [req1, req2, req3];
+
+            $http({
+                method: "POST",
                 url: "/",
-                data: JSON.stringify(req),
-                dataType: "json"
+                data: angular.toJson(arr)
             });
         };
+    }]);
       </script>
       <br />
       <br />
@@ -101,7 +119,7 @@
     <p class="question"><strong>[1 point]</strong>
       Briefly explain how the data in JSON organized.
     </p>
-      <textarea placeholder="Your Answer..."></textarea>
+      <textarea placeholder="Your Answer...">JSON is organized in key/value pairs, values can consist of additional nested JSON</textarea>
 
   </fieldset>
 
@@ -110,7 +128,7 @@
     <p class="question"><strong>[1 point]</strong>
       What method is used to convert a JSON string to a Javascript Object?  What method is used to convert a Javascript Object to JSON?
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">JSON.parse converts JSON to JavaScript and JSON.stringify converts object to JSON</textarea>
   </fieldset>
 
   <fieldset>
@@ -118,7 +136,7 @@
     <p class="question"><strong>[1 point]</strong>
       Not using JQuery or AngularJS, what class and what two methods on that class would be used to make a request?
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">XMLHTTPRequest, open and send</textarea>
   </fieldset>
 
   <fieldset>
@@ -126,14 +144,26 @@
     <p class="question"><strong>[1 point]</strong>
       How many ready states are there when making an HTTP request?  List each of them.
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">UNSENT
+OPENED
+HEADERS_RECEIVED
+LOADING
+DONE</textarea>
   </fieldset>
   <fieldset>
     <h2>Question 5</h2>
     <p class="question"><strong>[1 point]</strong>
       What is the AngularJS core object used to make HTTP Requests?  What are the available "methods" when making a request; and describe each one; which are the most common?  Which one is not part of the HTTP standards as of yet?  (Find answers using Google)
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">the core object is $http
+get: performs a get request, which requests a representation of the specified resource
+delete: performs a delete request, deletes the specific resource
+head: performs a HEAD request, same as the get method, but without response body
+jsonp: performs a JSONP request, requests data from a server residing in a different domain than the client
+put: performs a PUT request, replaces all current representations of the target with the payload
+patch: performs a PATCH request, applies partial modification to a resource
+
+jsonp is not apart of the HTTP standard yet</textarea>
   </fieldset>
 
 
