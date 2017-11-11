@@ -37,6 +37,28 @@
 
     <script>
       <!-- Write your Javascript and JQuery here-->
+        function thing() {
+            console.log('Stuff');
+            var req = {
+                foo: "bar",
+                bar: "baz"
+            };
+
+            console.log(req);
+            $.ajax({
+                type: "POST",
+                url: "/",
+                data: JSON.stringify(req),
+                dataType: "json"
+            });
+        };
+
+        $('#prob1button').click(function() {
+            console.log('hi');
+            thing();
+        });
+
+
     </script>
 
   </fieldset>
@@ -52,6 +74,21 @@
 
       <script>
         <!-- Write your Javascript and AngularJS here-->
+        function doAjax() {
+            console.log('Stuff');
+            var req = {
+                foo: "bar",
+                bar: "baz"
+            };
+
+            console.log(req);
+            $.ajax({
+                type: "POST",
+                url: "/",
+                data: JSON.stringify(req),
+                dataType: "json"
+            });
+        };
       </script>
       <br />
       <br />
