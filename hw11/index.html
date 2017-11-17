@@ -37,7 +37,7 @@
     <p class="question"><strong>[2 point]</strong>
       What is a module in AngularJS and what is the attribute added to the HTML to declare it?
     </p>
-      <textarea placeholder="Your Answer..."></textarea>
+      <textarea placeholder="Your Answer...">A module is a collection of services, directives, controllers, and configuration information. ng-app attribute</textarea>
 
   </fieldset>
 
@@ -46,7 +46,7 @@
     <p class="question"><strong>[2 point]</strong>
       Describe how AngularJS uses ViewModel and why this is different than the way JQuery works?
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">The view issues commands to the ViewModel, which then updates variables that the DOM is bound to. JQuery waits for events then parses the DOM to perfom an operation</textarea>
   </fieldset>
 
   <fieldset>
@@ -54,7 +54,7 @@
     <p class="question"><strong>[2 point]</strong>
       When should an AngularJS Service be used?
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">When multiple controllers need the same functionality, that functionality can be added to services which can be added to controllers</textarea>
   </fieldset>
 
   <fieldset>
@@ -62,14 +62,20 @@
     <p class="question"><strong>[2 point]</strong>
       What are the two common approaches to structuring an AngularJS application?  Describe them.
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">Organizing by type of file, such as model, controller, view. Organizing by feature, such as login, dashboard, user, etc</textarea>
   </fieldset>
   <fieldset>
     <h2>Question 5</h2>
     <p class="question"><strong>[2 point]</strong>
       Provide an example of a AngularJS declared route configuration with a controller.
     </p>
-    <textarea placeholder="Your Answer..."></textarea>
+    <textarea placeholder="Your Answer...">myModule.config(function($routeProvider) {
+    $routeProvider
+        .when('/', {
+            templateUrl: 'src/angello/storyboard/tmpl/storyboard.html',
+            controller: 'StoryboardCtrl',
+            controllerAs: 'storyboard'
+        })</textarea>
   </fieldset>
 
 
