@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todo</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+  <!-- La compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href='todo.css'>
+
+  <script>
+
+      var buildTable = function(todoArray){
+        $("tr").remove();
+        todoArray.forEach(function(todo){
+          //Eventually I'll loop through properties
+          var tableRow = "<tr>";
+          tableRow += "<td>" + todo.name + "</td>";
+          tableRow += "<td>" + todo.action + "</td>";
+          tableRow += "<td>" + todo.dateToComplete + "</td>";
+          tableRow += "<td>" + todo.email + "</td>";
+          tableRow += "<td class='blank'><button onClick=deleteAlert() type='button' class='btn btn-danger'>Delete</button></td>";
+          tableRow += '</tr>';
+          $("tbody").append(tableRow)
+        })
+      }
+
+      var paginateTodos = function(todoArray){
+        var paginatedTodos = new Array();
+        var todos = 1;
+        var page = 1;
+        todoArray.forEach(function(todo){
+          if(paginatedTodos[page]){
+            paginatedTodos[page].push(todo)
+          }else {
+            paginatedTodos[page] = new Array();
+            paginatedTodos[page].push(todo)
+          }
+          todos++;
+          console.log("todo number: " + todos);
+          console.log("page number: " + page);
+          if(todos > 5){
+            page++;
+            todos = 1;
+          }
+        })
+        return paginatedTodos;
+      }
+
+      var buildPagination = function(todoArray){
+        //We start at 1 and go less than length because the first element of pagination is undefined to make it easier when selecting the page
+        for(var i=1; i<todoArray.length; i++){
+          $(".pagination").append("<li><a onClick=buildTable(paginatedTodos[" + i + "])>" + i + "</a></li>");
+        }
+      }
+
+
+    var deleteAlert = function(){
+      $("#alert").append('<div class="alert alert-danger alert-dismissable">Delete this Todo? <a class="close" data-dismiss="alert" aria-label="close">x</a></div>')
+    }
+
+    var todos = new Array();
+
+    var Todo = function(name, action, dateToComplete, email){
+      this.name = name;
+      this.action = action;
+      this.dateToComplete = dateToComplete;
+      this.email = email;
+    }
+    Todo.prototype.matchingTodo = function (element) {
+      return this.name === element.name && this.action === element.action && this.dateToComplete === element.dateToComplete && this.email === element.email;
+    }
+    Todo.prototype.read = function() {
+      return todos.find(this.matchingTodo, this);
+    }
+    Todo.prototype.update = function(obj) {
+      var todo = this.read();
+      if(todo){
+        Object.assign(todo, obj);
+        var position = todos.findIndex(this.matchingTodo, this);
+        todos[position] = todo;
+      }else{
+        todos.push(this);
+      }
+    }
+    Todo.prototype.delete = function(){
+      var todo = this.read();
+      if(todo){
+        var position = todos.findIndex(this.matchingTodo, this);
+        todos.splice(position, 1);
+      }
+    }
+
+      var todo1 = new Todo('test', 'test', 'test', 'test');
+      var todo2 = new Todo('test2', 'test2', 'test2', 'test2');
+      var todo3 = new Todo('test3', 'test3', 'test3', 'test3');
+      todos.push(todo1);
+      todos.push(todo1);
+      todos.push(todo1);
+      todos.push(todo1);
+      todos.push(todo1);
+      todos.push(todo2);
+      todos.push(todo2);
+      todos.push(todo2);
+      todos.push(todo2);
+      todos.push(todo2);
+      todos.push(todo3);
+
+
+      var paginatedTodos = paginateTodos(todos);
+      $(document).ready(function(){
+        console.log(paginatedTodos);
+        buildPagination(paginatedTodos);
+        buildTable(paginatedTodos[1]);
+      })
+  </script>
+</head>
+
+<body>
+    <div class='menu '>
+      <ul>
+        <li class='item'><img src="http://i.stack.imgur.com/KVkTq.jpg" style="width: 20px"></li>
+        <li class='item'><span class='glyphicon glyphicon-list-alt'></span> Todos</li>
+        <li class='item'><span class='glyphicon glyphicon-plus'></span> Add</li>
+        <li class='item'><span class='glyphicon glyphicon-pencil'></span> Edit</li>
+        <li class='item'><span class='glyphicon glyphicon-cog'></span> More</li>
+      </ul>
+    </div>
+
+  <div class=' container-fluid'>
+    <div id='alert'></div>
+    <div class='jumbotron'>
+      <h1 class='text-center'>Todo List</h1>
+      <hr/>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut cursus lorem dapibus, volutpat turpis eget, eleifend ante. Nunc eget lacinia eros, ut semper enim. Donec quis sem purus. Nulla facilisi. Sed eget laoreet mi. Suspendisse eu egestas libero. Vivamus eleifend dignissim interdum. Integer luctus tellus at interdum ultrices.
+
+  In sit amet rhoncus turpis. Cras feugiat augue sit amet est facilisis vulputate. In ut egestas orci, eu fringilla nunc. Mauris in elementum sapien, sed aliquet enim. Duis iaculis gravida orci in hendrerit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla at placerat elit.</p>
+    </div>
+    <table class='table table-striped'>
+      <thead class='thead-default'>
+        <tr>
+          <td>Todo</td>
+          <td>Action</td>
+          <td>Date</td>
+          <td>User</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Go To Zoo</td>
+          <td>Wife said so</td>
+          <td>Tomorrow</td>
+          <td>Ryan</td>
+          <td class='blank'><button onClick="deleteAlert()" type='button' class='btn btn-danger'>Delete</button></td>
+        </tr>
+        <tr>
+          <td>Do Homework</td>
+          <td>Teacher said so</td>
+          <td>Today</td>
+          <td>Ryan</td>
+          <td class='blank'><button onClick="deleteAlert()" class='btn btn-danger'>Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <ul class='pagination'>
+    </ul>
+    <div class='alert alert-info alert-dismissable'>
+      <a class='close' data-dismiss='alert' aria-label='close'>OK</a>
+      Adding Todos is currently under construction :)
+    </div>
+    <h1 class='h1'>Add Todo <span class='label label-warning'>Broked</span></h1>
+    <form class='form-inline'>
+      <div class='form-group'>
+        <label for='todo' class='sr-only'>Todo</label>
+        <input type='text' class='form-control' id='todo' placeholder='Todo...'></input>
+      </div>
+      <br>
+      <textarea rows='2' class='form-control' placeholder='Provide details of what needs to be done...'></textarea>
+      <br>
+      <div class='checkbox'>
+        <label> <input type='checkbox'> Do Right Away?</label>
+      </div>
+      <br><br>
+      <div class='form-group'>
+        <label for='emailaddress' class='sr-only'>Email Address</label>
+        <input type='email' class='form-control' id='emailaddress' placeholder='Enter email'></input>
+      </div>
+        <button type='submit' class='btn btn-default'>Add Todo</button>
+    </form>
+  </div>
+</body>
+</html>
