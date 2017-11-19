@@ -19,7 +19,7 @@
 //Abandon all hope, ye who enter here
 
       var buildTable = function(todoArray){
-        $("#todoTable tr").not(':first').remove();
+        $("tr").not(':first').remove();
         todoArray.forEach(function(paginatedArray){
           var todo = paginatedArray[0];
           var index = paginatedArray[1];
@@ -33,8 +33,8 @@
           tableRow += "<td class='blank'><button onClick=updateTodoModal(event) type='button' class='btn btn-info'>Update</button>";
           tableRow += " <button onClick=deleteTodo(todos," + index + ") type='button' class='btn btn-danger'>Delete</button></td>";
           tableRow += '</tr>';
-          $("#todoTable tbody").append(tableRow)
-          $('#todoTable tr').not(':first').filter(':even').find('td').not('.blank').css('background-color', 'orange');
+          $("tbody").append(tableRow)
+          $('tr').not(':first').filter(':even').css('background-color', 'orange');
         })
       }
 
@@ -176,50 +176,21 @@
           refreshTable();
         })
         $('#browns').on('click', function(){
-          getSchedule();
+          getSomething();
         })
       })
-      var buildSchedule = function(games){
-        $('#scheduleTable thead').remove();
-        $('#scheduleTable tbody').remove();
-        buildScheduleHeader();
-        buildScheduleRows(games);
-      }
-      var buildScheduleHeader = function(){
-        var html = "<thead class='thead-default'>";
-        html += "<tr>"
-        html += "<td>Home Team</td>"
-        html += "<td>Away Team</td>"
-        html += "<td>Date</td>"
-        html += "<td>Time</td>"
-        html += "</tr>"
-        html += "</thead>"
-        html += "<tbody>"
-        html += "</tbody>"
-        $('#scheduleTable').append(html);
-      }
-      var buildScheduleRows = function(games){
-        games.forEach(function(game){
-          html = "<tr>";
-          html += "<td>" + game['homeTeam']['City'] + ' ' + game['homeTeam']['Name'] + '</td>';
-          html += "<td>" + game['awayTeam']['City'] + ' ' + game['awayTeam']['Name'] + '</td>';
-          html += "<td>" + game['date'] + "</td>";
-          html += "<td>" + game['time'] + "</td>";
-          html += "</tr>";
-          $('#scheduleTable tbody').append(html);
-        })
-      }
 
-      var auth = 'c2FpZ29uOmJpZ2Rldg==';
+      var auth = 'c2FpZ29uOmJpZ2Rldg==\n';
 
-      var getSchedule = function(){
+      var getSomething = function(){
+        console.log("stuff");
         $.ajax({
-          url: 'https://api.mysportsfeeds.com/v1.1/pull/nfl/2016-2017-regular/full_game_schedule.json?team=Cle',
+          url: 'https://api.mysportsfeeds.com/v1.1/pull/nfl/2016-2017-regular/full_game_schedule.json?team=Browns',
           dataType: 'json',
           async: true,
           headers: { "Authorization": "Basic " + auth},
           success: function(msg){
-            buildSchedule(msg.fullgameschedule.gameentry);
+            console.log(msg);
           },
           error: function(xhr, ajaxOptions, thrownError){
             console.log(xhr.status);
@@ -250,7 +221,7 @@
 
   In sit amet rhoncus turpis. Cras feugiat augue sit amet est facilisis vulputate. In ut egestas orci, eu fringilla nunc. Mauris in elementum sapien, sed aliquet enim. Duis iaculis gravida orci in hendrerit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla at placerat elit.</p>
     </div>
-    <table id='todoTable' class='table table-striped'>
+    <table class='table'>
       <thead class='thead-default'>
         <tr>
           <td>Todo</td>
@@ -311,10 +282,6 @@
     </form>
     <br>
     <button id='browns' type='button' class='btn btn-primary'>BROWNS</button>
-    <div id='schedule'>
-      <table id='scheduleTable' class='table'>
-      </table>
-    </div>
   </div>
 </body>
 </html>
