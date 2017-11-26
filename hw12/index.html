@@ -29,7 +29,7 @@
 		</style>
 	</head>
 
-	<body>
+	<body ng-controller="TodoController as todoCtrl">
 
 		<div class="container">
 			<div id="header">
@@ -64,9 +64,77 @@
 					<br />
 					<script>
 						//add AngularJS Javascxript code here
+            var app = angular.module('homework', []);
+            app.controller('TodoController', function($scope) {
+              var todo = this;
+
+              todo.newTodo = {};
+              todo.todoList = new Array();
+
+              function ID(){
+                return '_' + Math.random().toString(36).substr(2,9);
+              }
+              todo.resetForm = function(){
+                todo.newTodo = null;
+                todo.todoForm.$setPristine();
+                todo.todoForm.$setUntouched();
+              }
+               todo.addTodo = function(){
+                var date = new Date();
+                var newTodo = angular.copy(todo.newTodo);
+                newTodo.id = ID();
+                newTodo.date = date.toDateString();
+
+                todo.todoList.push(newTodo);
+                todo.resetForm();
+              }
+               todo.deleteTodo = function(Id){
+                 for(var i = 0; i < todo.todoList.length; i++){
+                   if(todo.todoList[i].id === Id){
+                     todo.todoList.splice(i,1);
+                     break;
+                   }
+                 }
+               }
+            })
 					</script>
-					<form ng-controller="TodoController as todoCtrl" ng-submit="todoCtrl.addTodo()">
+          <div>
+            <table id='todoTable' class='table table-striped'>
+              <thead class='thead-default'>
+                <tr ng-show="todoCtrl.todoList.length > 0">
+                  <td ng-hide='true'>Todo Id</td>
+                  <td>Todo Name</td>
+                  <td>Description</td>
+                  <td>Date</td>
+                  <td></td>
+                </tr>
+              </thead>
+              <tbody >
+                <tr ng-repeat="todo in todoCtrl.todoList">
+                  <td ng-hide='true'>{{todo.id}}</td>
+                  <td>{{todo.name}}</td>
+                  <td>{{todo.description}}</td>
+                  <td>{{todo.date}}</td>
+                  <td><span ng-click='todoCtrl.deleteTodo(todo.id)' class='glyphicon glyphicon-remove'</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+					<form name='todoCtrl.todoForm' ng-submit="todoCtrl.addTodo()">
 						<!-- add Bootstrap and AngularJS HTML Form here -->
+            <div class='form-group'>
+              <div class='controls'>
+                <label class='control-label' for='name'>Name</label>
+                <input type='text' id='name' name='name' ng-model='todoCtrl.newTodo.name' class='form-control'>
+              </input>
+                <label class='control-label' for='description'>Description</label>
+                <input type='text' id='description' name='description' ng-model='todoCtrl.newTodo.description' class='form-control'>
+              </input>
+              <br>
+              <button class='btn pull-right btn-primary'>Add Todo</button>
+              </div>
+            </div>
+
 					</form>
 
 				</fieldset>
@@ -79,7 +147,7 @@
 						<strong>[1 point]</strong>
 						According to the reading what is the "glue between the View and the Controller in AngularJS.  Hint: the answer is one word?
 					</p>
-					<textarea placeholder="Your Answer..."></textarea>
+					<textarea placeholder="Your Answer...">Scope</textarea>
 
 
 				</fieldset>
@@ -90,7 +158,7 @@
 						<strong>[1 point]</strong>
 						Describe the built-in directive in AngularJS that is used to loop over an array.
 					</p>
-					<textarea placeholder="Your Answer..."></textarea>
+					<textarea placeholder="Your Answer...">ng-repeat</textarea>
 				</fieldset>
 
 				<fieldset>
@@ -99,7 +167,9 @@
 						<strong>[1 point]</strong>
 						Describe Views and Controllers in AngularJS.  As descibed in the reading, mention the two best practices for Controllers.
 					</p>
-					<textarea placeholder="Your Answer..."></textarea>
+					<textarea placeholder="Your Answer...">Views are the generated HTML after AngularJS fills in data from cotrollers. Controllers are tied to each view and hold all the data and behavior needed for the page. Two best practices are:
+Controllers should be lightweight and specific to the view they control
+Controllers should have no knowledge of the view they control</textarea>
 				</fieldset>
 
 				<fieldset>
@@ -108,7 +178,8 @@
 						<strong>[1 point]</strong>
 						Describe Models and Services in AngularJS;
 					</p>
-					<textarea placeholder="Your Answer..."></textarea>
+					<textarea placeholder="Your Answer...">Services are where functionality that is used throughout the application is stored, and can be injected into controllers
+Models are where remote service calls are made, and the returning state is managed</textarea>
 				</fieldset>
 				<fieldset>
 					<h2>Question 5</h2>
@@ -116,7 +187,8 @@
 						<strong>[1 point]</strong>
 						Describe Promises and Intercepts.
 					</p>
-					<textarea placeholder="Your Answer..."></textarea>
+					<textarea placeholder="Your Answer...">Promises are objects that wait for asynchronous remote calls and handle the handle the response once the promise receives one
+Intercepts are functions that can be called when requests or responses are performed. These can be added to requests, responses, or errors on either of those. </textarea>
 				</fieldset>
 
 			</div>
