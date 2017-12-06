@@ -1,0 +1,283 @@
+<html ng-app="homework">
+	<!--
+	This is the HTML for the homework problem. It may not be edited
+	-->
+
+	<head>
+		<title>Homework #12 / #14</title>
+		<link rel="stylesheet" type="text/css" href="homework.css">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+		<!-- Latest compiled JavaScript -->
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+		<!-- AngularJS Library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
+
+		<style>
+		.glyphicon-remove{
+			color:pink;
+		}
+		.glyphicon-remove:hover{
+			color:red;
+			cursor:pointer;
+		}
+		</style>
+	</head>
+
+	<body ng-controller="TodoController as todoCtrl">
+
+		<div class="container">
+			<div id="header">
+				<h1>Homework #12</h1>
+				<p>
+					WEBD 335 &#8213; Pete Gordon
+				</p>
+				<div id="instructions">
+					<p>
+						<strong>Instructions:</strong> Follow the instructions below for each Problem (you can write the Javascript in this HTML file directly and return it) and Answer each Question completely (in another document).
+					</p>
+				</div>
+
+				<fieldset>
+					<h2>Problem 1 &#8213; AngularJS </h2>
+					<p class="question">
+						<strong>[20 points]</strong> Create the following Homework form using AngularJS.  Reference the Code School Tutorial and other sources on the Internet to learn how to best build this form in Angular and Bootstrap.
+						<ul>
+							<li>Declare a TodoController and use it as todoCtrl</li>
+							<li>Add a todoList array in the TodoController</li>
+							<li>Add a "addTodo" function in the TodoController</li>
+							<li>Create a HTML Table that displays the contents of the todoList array; and shows a red glyphicon-remove.</li>
+							<li>Create a HTML Form (using Bootstrap and ng-model) to accept Todo Name and Description.</li>
+							<li>Add a "deleteTodo" function in the TodoController and bind the glyphicon-remove to it on ng-click so that it removes the todo from the todoList array.</li>
+							<li>Be sure to keep the same styling; striped table rows, and use table header</li>
+							<li>When there is no todos, then the header row should not appear--use AngularJS ng-show to have the header row only appear when the todoList array has todos</li>
+						</ul>
+					</p>
+					<img src="homework12.gif" />
+
+					<br />
+					<br />
+					<script>
+						//add AngularJS Javascxript code here
+            var app = angular.module('homework', ['ngRoute']);
+
+            app.config(function($routeProvider) {
+              $routeProvider.when('/todos/:id', {
+                controller: 'SingleTodoController',
+                templateUrl: 'todo.html'
+              });
+            });
+
+            app.service('todoStore', function(){
+              this.todos = new Array();
+
+              this.addTodo = function(todo){
+                this.todos.push(todo);
+              }
+              this.findTodo = function(id){
+                 function byId(element){
+                   return element.id == id;
+                 }
+                 return this.todos.find(byId);
+              }
+              this.deleteTodo = function(Id){
+                for(var i = 0; i < this.todos.length; i++){
+                  if(this.todos[i].id === Id){
+                    this.todos.splice(i,1);
+                    break;
+                  }
+                }
+              }
+              this.getTodos = function(){
+                return this.todos;
+              }
+
+            });
+
+            app.controller('TodoController', ['$scope', '$routeParams', 'todoStore', function($scope, $routeParams, store) {
+              var todo = this;
+
+              todo.newTodo = {};
+              todo.todoList = store.getTodos();
+
+
+              function ID(){
+                return '_' + Math.random().toString(36).substr(2,9);
+              }
+              todo.resetForm = function(){
+                todo.newTodo = null;
+                todo.todoForm.$setPristine();
+                todo.todoForm.$setUntouched();
+              }
+               todo.findTodo = function(id){
+                 return store.findTodo($routeParams.id)
+              }
+               todo.addTodo = function(){
+                var date = new Date();
+                var newTodo = angular.copy(todo.newTodo);
+                newTodo.id = ID();
+                newTodo.date = date.toDateString();
+
+                store.addTodo(newTodo);
+                todo.resetForm();
+              }
+               todo.deleteTodo = function(id){
+                 store.deleteTodo(id);
+               };
+            }]);
+            app.controller('SingleTodoController', ['$scope', '$routeParams', 'todoStore', function($scope, $routeParams, store) {
+              $scope.todo = store.findTodo($routeParams.id);
+            }]);
+					</script>
+          <div>
+            <table id='todoTable' class='table table-striped'>
+              <thead class='thead-default'>
+                <tr ng-show="todoCtrl.todoList.length > 0">
+                  <td ng-hide='true'>Todo Id</td>
+                  <td>Todo Name</td>
+                  <td>Description</td>
+                  <td>Date</td>
+                  <td></td>
+                </tr>
+              </thead>
+              <tbody >
+                <tr ng-repeat="todo in todoCtrl.todoList">
+                  <td ng-hide='true'>{{todo.id}}</td>
+                  <td>{{todo.name}}</td>
+                  <td>{{todo.description}}</td>
+                  <td>{{todo.date}}</td>
+                  <td><a href="#/todos/{{todo.id}}">Show Details</a></td>
+                  <td><span ng-click='todoCtrl.deleteTodo(todo.id)' class='glyphicon glyphicon-remove'</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div ng-view></div>
+					<form name='todoCtrl.todoForm' ng-submit="todoCtrl.addTodo()">
+						<!-- add Bootstrap and AngularJS HTML Form here -->
+            <div class='form-group'>
+              <div class='controls'>
+                <label class='control-label' for='name'>Name</label>
+                <input type='text' id='name' name='name' ng-model='todoCtrl.newTodo.name' class='form-control'>
+              </input>
+                <label class='control-label' for='description'>Description</label>
+                <input type='text' id='description' name='description' ng-model='todoCtrl.newTodo.description' class='form-control'>
+              </input>
+              <br>
+              <button class='btn pull-right btn-primary'>Add Todo</button>
+              </div>
+            </div>
+
+					</form>
+
+				</fieldset>
+
+
+
+				<fieldset>
+          <h1>Homework 12<h1>
+					<h2>Question 1</h2>
+					<p class="question">
+						<strong>[1 point]</strong>
+						According to the reading what is the "glue between the View and the Controller in AngularJS.  Hint: the answer is one word?
+					</p>
+					<textarea placeholder="Your Answer...">Scope</textarea>
+
+
+				</fieldset>
+
+				<fieldset>
+					<h2>Question 2</h2>
+					<p class="question">
+						<strong>[1 point]</strong>
+						Describe the built-in directive in AngularJS that is used to loop over an array.
+					</p>
+					<textarea placeholder="Your Answer...">ng-repeat</textarea>
+				</fieldset>
+
+				<fieldset>
+					<h2>Question 3</h2>
+					<p class="question">
+						<strong>[1 point]</strong>
+						Describe Views and Controllers in AngularJS.  As descibed in the reading, mention the two best practices for Controllers.
+					</p>
+					<textarea placeholder="Your Answer...">Views are the generated HTML after AngularJS fills in data from cotrollers. Controllers are tied to each view and hold all the data and behavior needed for the page. Two best practices are:
+Controllers should be lightweight and specific to the view they control
+Controllers should have no knowledge of the view they control</textarea>
+				</fieldset>
+
+				<fieldset>
+					<h2>Question 4</h2>
+					<p class="question">
+						<strong>[1 point]</strong>
+						Describe Models and Services in AngularJS;
+					</p>
+					<textarea placeholder="Your Answer...">Services are where functionality that is used throughout the application is stored, and can be injected into controllers
+Models are where remote service calls are made, and the returning state is managed</textarea>
+				</fieldset>
+				<fieldset>
+					<h2>Question 5</h2>
+					<p class="question">
+						<strong>[1 point]</strong>
+						Describe Promises and Intercepts.
+					</p>
+					<textarea placeholder="Your Answer...">Promises are objects that wait for asynchronous remote calls and handle the handle the response once the promise receives one
+Intercepts are functions that can be called when requests or responses are performed. These can be added to requests, responses, or errors on either of those. </textarea>
+				</fieldset>
+
+				<fieldset>
+          <h1>Homework 14<h1>
+					<h2>Question 1</h2>
+					<p class="question">
+						<strong>[1 point]</strong>
+						What two events are used in AngularJS to listen to when a route is changing from one route to another?
+					</p>
+					<textarea placeholder="Your Answer...">$routeChangeStart and $routeChangeSuccess</textarea>
+
+
+				</fieldset>
+
+				<fieldset>
+					<h2>Question 2</h2>
+					<p class="question">
+						<strong>[1 point]</strong>
+						In AngularJS where are parameters stored before injected into and available to the controller?
+					</p>
+					<textarea placeholder="Your Answer...">Services</textarea>
+				</fieldset>
+
+				<fieldset>
+					<h2>Question 3</h2>
+					<p class="question">
+						<strong>[1 point]</strong>
+						Describe what ng-view does.
+					</p>
+					<textarea placeholder="Your Answer...">the rendered template from templateURL is inserted into the element containing the ng-view directive</textarea>
+				</fieldset>
+
+				<fieldset>
+					<h2>Question 4</h2>
+					<p class="question">
+						<strong>[1 point]</strong>
+						 List the AngularJS five animation events
+					</p>
+					<textarea placeholder="Your Answer...">enter, leave, move, addClass, removeClass</textarea>
+				</fieldset>
+				<fieldset>
+					<h2>Question 5</h2>
+					<p class="question">
+						<strong>[1 point]</strong>
+						Describe the $routeProvider.when method.
+					</p>
+					<textarea placeholder="Your Answer...">the when method takes a a path parameter and a route config object. The path param defines the url pattern that the route will match against, while the route config object will define how the matched route is handled i.e. what controller to call and what template to render</textarea>
+				</fieldset>
+
+			</div>
+		</div>
+	</body>
